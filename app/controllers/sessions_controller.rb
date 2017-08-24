@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
         sign_in(@user)
       end
       flash[:success] = "You've been successfully signed in"
-      redirect_to root_path
+      redirect_to user_path(@user)
     else
       flash.now[:error] = "We couldn't sign you in"
       render :new

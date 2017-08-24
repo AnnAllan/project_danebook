@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170823231022) do
+ActiveRecord::Schema.define(version: 20170824013834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,12 @@ ActiveRecord::Schema.define(version: 20170823231022) do
     t.datetime "dob"
     t.string   "gender"
     t.string   "auth_token"
+    t.string   "college"
+    t.string   "currently_lives"
+    t.string   "phone"
+    t.text     "words_live"
+    t.text     "about_me"
+    t.string   "hometown"
     t.index ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree
   end
 
