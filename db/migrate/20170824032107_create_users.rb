@@ -1,6 +1,6 @@
-class CreateUsersTable < ActiveRecord::Migration[5.0]
+class CreateUsers < ActiveRecord::Migration[5.0]
   def change
-    create_table :users_tables do |t|
+    create_table :users do |t|
       t.string :first_name
       t.string :last_name
       t.string :email
@@ -13,6 +13,8 @@ class CreateUsersTable < ActiveRecord::Migration[5.0]
       t.text   :words_live
       t.text   :about_me
       t.datetime :dob
+      t.string :auth_token
     end
+    add_index :users, :auth_token, :unique => true
   end
 end
