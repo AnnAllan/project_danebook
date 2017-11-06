@@ -1,0 +1,11 @@
+<section> <!-- Post form -->
+  <div>
+    <h2><strong>Post</strong></h2>
+  </div>
+  <div>
+    <%= simple_form_for [current_user, @post] do |f| %>
+      <%= f.input :content, placeholder: 'Tell the world something' %>
+      <%= f.button :submit, "Post" %>
+    <% end %>
+  </div>
+</section>

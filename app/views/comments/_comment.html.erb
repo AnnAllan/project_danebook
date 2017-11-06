@@ -1,0 +1,16 @@
+<div>
+  <div>
+    <%= image_tag("icon_photo_small.png", alt: "photo") %>
+  </div>
+  <div>
+    <%= link_to comment.user.full_name, user_path(comment.user.id) %>
+  </div>
+  <div>
+    <%= comment.body %>
+  </div>
+  <div>
+    <%= like_display(comment).html_safe %>
+    <%= like_or_unlike_link(comment) %>
+    <%= commnet_owner_link_option(comment) %>
+  </div>
+</div>

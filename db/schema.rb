@@ -10,26 +10,61 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170824032107) do
+ActiveRecord::Schema.define(version: 20171103202250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "commentable_id",   null: false
+    t.string   "commentable_type", null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "user_id"
+    t.integer  "likable_id",   null: false
+    t.string   "likable_type", null: false
+    t.index ["created_at"], name: "index_likes_on_created_at", using: :btree
+    t.index ["user_id", "likable_id", "likable_type"], name: "index_likes_on_user_id_and_likable_id_and_likable_type", unique: true, using: :btree
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.date     "dob"
+    t.string   "college"
+    t.string   "hometown"
+    t.string   "location"
+    t.string   "phone"
+    t.text     "motto"
+    t.text     "about"
+    t.string   "gender"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
     t.string   "password_digest"
-    t.string   "gender"
-    t.string   "college"
-    t.string   "hometown"
-    t.string   "currently_lives"
-    t.string   "phone"
-    t.text     "words_live"
-    t.text     "about_me"
     t.datetime "dob"
     t.string   "auth_token"
     t.index ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree
   end
 
+  add_foreign_key "profiles", "users"
 end

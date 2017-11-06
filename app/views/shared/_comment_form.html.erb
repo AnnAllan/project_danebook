@@ -1,0 +1,6 @@
+<%= simple_form_for Comment.new do |f| %>
+  <%= f.hidden_field :commentable_type, :value => "#{parent.class}" %>
+  <%= f.hidden_field :commentable_id,   :value => "#{parent.id}" %>
+  <%= f.text_area :content, placeholder: "Write a comment" %>
+  <%= f.submit "Create Comment" %>
+<% end %>

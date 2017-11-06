@@ -6,8 +6,10 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:password])
       if params[:remember_me]
         permanent_sign_in(@user)
+        flash[:success] = "You have signed in"
       else
         sign_in(@user)
+        flash[:success] = "You have signed in"
       end
       flash[:success] = "You've been successfully signed in"
       redirect_to user_path(@user)

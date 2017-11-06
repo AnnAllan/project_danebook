@@ -20,6 +20,11 @@
     <% else %>
       <%= link_to "Login", login_path %>
     <% end %>
+
+    <div>
+      <%= render partial: "shared/flash" %>
+    </div>
+    
     <%= yield %>
   </body>
 </html>

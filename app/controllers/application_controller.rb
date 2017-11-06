@@ -44,4 +44,11 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
+
+  def require_valid_user
+    unless User.exists?(params[:user_id])
+      flash[:error] = "Not a valid user"
+      redirect_to user_posts_path(current_user.id)
+    end
+  end
 end

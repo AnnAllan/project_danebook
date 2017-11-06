@@ -1,59 +1,125 @@
 <div class="container">
   <%= render partial: "shared/nav", locals: {user: @user} %>
 </div>
-
-<main><!--About information -->
-    <div class="titlebar-full">
-      <h1>About</h1>
-      <%= link_to "Edit your Profile", edit_user_path(@user.id) %>
+<main>
+  <section> <!--About-->
+    <div>
+      <h2><strong>About</strong></h2>
     </div>
-    <div class="about-info">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-4 col-sm-offset-1">
-            <table id="basic_information">
-              <tr>
-                <th colspan="2">Basic Information</th>
-              </tr>
-              <tr>
-                <td>Birthday:</td>
-                <td><%= @user.dob %></td>
-              </tr>
-              <tr>
-                <td>College:</td>
-                <td><%= @user.college %></td>
-              </tr>
-              <tr>
-                <td>Hometown:</td>
-                <td><%= @user.hometown %></td>
-              </tr>
-              <tr>
-                <td>Currently Lives:</td>
-                <td><%= @user.currently_lives %></td>
-              </tr>
-            </table>
-            <table>
-              <tr>
-                <th colspan="2">Contact Information</th>
-              </tr>
-              <tr>
-                <td>Email:</td>
-                <td><%= @user.email %></td>
-              </tr>
-              <tr>
-                <td>Telephone:</td>
-                <td><%= @user.phone %></td>
-              </tr>
-            </table>
-          </div>
-          <div class="col-sm-5 col-sm-offset-1">
-            <h2>Words to Live By</h2>
-            <p><%= @user.words_live %></p>
-            <h2>About Me</h2>
-            <p><%= @user.about_me %></p>
-          </div>
-        </div>
-      </div>
+    <div>
+      <p>
+        <strong>Born on: </strong> <%= @user.dob %>
+      </p>
+      <p>
+        <strong>Went to school at: </strong> <%= @user.college %>
+      </p>
+      <p>
+        <strong>Hometown: </strong> <%= @user.hometown %>
+      </p>
+      <p>
+        <strong>Currently Lives: </strong> <%=@user.currently_lives %>
+      </p>
     </div>
-  </div>
+  </section>
+  <section> <!-- Photos -->
+    <div>
+      <h2><strong>Photos (123)</strong></h2>
+    </div>
+    <table>
+      <tr>
+        <td>
+          <div>
+            <%= image_tag("icon_photo_small.png", alt: "photo") %>
+          </div>
+        </td>
+        <td>
+          <div>
+            <%= image_tag("icon_photo_small.png", alt: "photo") %>
+          </div>
+        </td>
+        <td>
+          <div>
+            <%= image_tag("icon_photo_small.png", alt: "photo") %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            <%= image_tag("icon_photo_small.png", alt: "photo") %>
+          </div>
+        </td>
+        <td>
+          <div>
+            <%= image_tag("icon_photo_small.png", alt: "photo") %>
+          </div>
+        </td>
+        <td>
+          <div>
+            <%= image_tag("icon_photo_small.png", alt: "photo") %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            <%= image_tag("icon_photo_small.png", alt: "photo") %>
+          </div>
+        </td>
+        <td>
+          <div>
+            <%= image_tag("icon_photo_small.png", alt: "photo") %>
+          </div>
+        </td>
+        <td>
+          <div>
+            <%= image_tag("icon_photo_small.png", alt: "photo ") %>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <%= link_to "See More Photos", "#" %>
+  </section>
+  <section> <!-- Friends -->
+    <div>
+      <h2><strong>Friends (524)</strong></h2>
+    </div>
+    <table>
+      <tr>
+        <td>
+          <div>
+            <%= image_tag("icon_photo_small.png", alt: "photo of friend") %>
+          </div>
+        </td>
+        <td>
+          <div>
+            <%= image_tag("icon_photo_small.png", alt: "photo of friend") %>
+          </div>
+        </td>
+        <td>
+          <div>
+            <%= image_tag("icon_photo_small.png", alt: "photo of friend") %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            <%= image_tag("icon_photo_small.png", alt: "photo of friend") %>
+          </div>
+        </td>
+        <td>
+          <div>
+            <%= image_tag("icon_photo_small.png", alt: "photo of friend") %>
+          </div>
+        </td>
+        <td>
+          <div>
+            <%= image_tag("icon_photo_small.png", alt: "photo of friend") %>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <%= link_to "See More Friends", "#" %>
+  </section>
 </main>

@@ -36,6 +36,7 @@ gem 'better_errors'
 gem 'binding_of_caller'
 gem 'jazz_fingers'
 gem 'will_paginate'
+gem 'simple_form'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

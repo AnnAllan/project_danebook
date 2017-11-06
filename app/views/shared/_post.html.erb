@@ -1,0 +1,34 @@
+<ul>
+  <%= @user.posts.each do |post| %>
+    <li>
+      <div>
+        <img src="assets/icon_photo_small.png">
+        <%= link_to "#{@user.first_name}", user_path(current_user.id) %>
+        <p>
+          <%= post.content %>
+        </p>
+      </div>
+      <div>
+        <p>
+          <%= simple_form_for @like do |f| %>
+            <%= f.hidden :user_id, :value => @user.id %>
+            <%= f.hidden :post_id, :value => @user.post.id %>
+            <%= f.button :sumbmit, "Like" %>
+          <% end %>
+        </p>
+        <p>
+          Liked by 7 people
+        </p>
+        <p>
+          Karen, Susan, Linda
+        </p>
+        <p>
+          Comment
+        </p>
+        <p>
+          Delete
+        </p>
+      </div>
+    </li>
+  <% end %>
+</ul>
