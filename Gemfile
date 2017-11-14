@@ -37,6 +37,7 @@ gem 'binding_of_caller'
 gem 'jazz_fingers'
 gem 'will_paginate'
 gem 'simple_form'
+gem 'faker'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -44,7 +45,17 @@ gem 'simple_form'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'rspec-rails'
+  gem 'guard-rspec', require: false
 end
+
+group :test do
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'shoulda-matchers', '~> 3.1'
+end
+
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
