@@ -4,6 +4,8 @@ class Post < ApplicationRecord
   has_many :comments, :as => :commentable, class_name: "Comment", dependent: :destroy
   default_scope -> {order(created_at: :desc)}
   validates :user_id, presence: true
-  validates :content, presence: true
+  validates :content, presence: true,
+                      format: {:with => /[\S]+/},
+                      length: {:in => 1..1000}
 
 end
