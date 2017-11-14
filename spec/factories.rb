@@ -21,13 +21,13 @@ FactoryGirl.define do
 
   factory :post_comment, class: "Comment" do
     association :commentable, :factory => :post
-    content sequence(:content){ |n| "Post comment body#{n}"}
+    sequence(:content){ |n| "Post comment body#{n}"}
     user
   end
 
 
   factory :post do
-    content sequence(:content){ |n| "Post body#{n}"}
+    sequence(:content){ |n| "Post body#{n}"}
     user
   end
 
