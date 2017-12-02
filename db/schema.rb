@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171103202250) do
+ActiveRecord::Schema.define(version: 20171201171819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 20171103202250) do
     t.integer  "commentable_id",   null: false
     t.string   "commentable_type", null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
+  end
+
+  create_table "friendings", force: :cascade do |t|
+    t.integer  "friend_id",   null: false
+    t.integer  "friender_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["friend_id", "friender_id"], name: "index_friendings_on_friend_id_and_friender_id", unique: true, using: :btree
   end
 
   create_table "likes", force: :cascade do |t|
@@ -44,7 +52,6 @@ ActiveRecord::Schema.define(version: 20171103202250) do
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"
-    t.date     "dob"
     t.string   "college"
     t.string   "hometown"
     t.string   "location"
@@ -54,15 +61,17 @@ ActiveRecord::Schema.define(version: 20171103202250) do
     t.string   "gender"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "dob_day"
+    t.integer  "dob_month"
+    t.integer  "dob_year"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "dob"
-    t.string   "auth_token"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "password_digest"
+    t.string "auth_token"
     t.index ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree
   end
 

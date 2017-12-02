@@ -1,0 +1,8 @@
+<% if friends %>
+  <% friends.each do |friend| %>
+    <%= image_tag("icon_photo_small.png", alt: "photo") %>
+    <%= friend.full_name %>
+    <%= friend.friends.size %>
+    <%= friend_unfriend_button(friend.id) %>
+  <% end %>
+<% end %>

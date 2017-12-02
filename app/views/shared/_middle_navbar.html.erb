@@ -11,8 +11,8 @@
       <li><%= link_to "Timeline", user_posts_path(params[:user_id]) %></li>
       <li><%= link_to "About", user_profile_path(params[:user_id]) %></li>
       <li><%= link_to "Photos (123)", '#' %></li>
-      <li><%= link_to "Friends (532)", '#' %></li>
+      <li><%= link_to ("Friends " + friend_num).html_safe, friendings_path(user_id: params[:user_id]) %></li>
     </ul>
-    <%= link_to "Edit Profile", edit_user_profile_path(@user) %></a>
+    <%= edit_or_friend_link %>
   </div>
 </nav><!-- close middle nav -->

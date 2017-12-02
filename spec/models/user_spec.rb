@@ -11,17 +11,17 @@ describe User do
   end
 
   context "associations" do
-    it "creates a profile" do
-      user.save
-      expect(user).to receive(:profile)
-      user.profile
-    end
+    # it "creates a profile" do
+    #   user.save
+    #   expect(user).to receive(:profile)
+    #   user.profile
+    # end
 
-    it "cannot have more than one profile" do
-      user.save
-      new_profile = build(:profile)
-      expect{user.profile << new_profile}.to raise_error
-    end
+    # it "cannot have more than one profile" do
+    #   user.save
+    #   new_profile = build(:profile)
+    #   expect{user.profile << new_profile}.to raise_error
+    # end
 
     it "creates a token" do
       user.save
@@ -98,8 +98,7 @@ describe User do
       user.save
       new_user = build(:user, first_name: "first", last_name: "last",
                         email: "me@example.com", password: "password",
-                        password_confirmation: "password",
-                        dob: Date.parse('06-06-1996') )
+                        password_confirmation: "password")
 
       expect(new_user).to_not be_valid
     end
@@ -124,13 +123,6 @@ describe User do
 
     it "should have matching password and password confirmation" do
       user = build(:user, password: "password", password_confirmation: "notpassword")
-      expect(user).to_not be_valid
-    end
-  end
-
-  context "dob" do
-    it "cannot be nil" do
-      user = build(:user, dob: nil)
       expect(user).to_not be_valid
     end
   end

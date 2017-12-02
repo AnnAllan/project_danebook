@@ -1,4 +1,5 @@
 class LikesController < ApplicationController
+  before_action :store_referer
 
   def create
     @like = Like.new(safe_like_params)
@@ -21,7 +22,7 @@ class LikesController < ApplicationController
 
   private
     def safe_like_params
-      params.require(:like).permit(:likable_type, :likable_id, :id)
+      params.require(:like).permit(:likable_type, :likable_id, :method, :id)
     end
 
 end

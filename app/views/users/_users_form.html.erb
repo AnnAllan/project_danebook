@@ -1,0 +1,41 @@
+<!-- SIGN UP -->
+<div class="col-md-5 col-md-offset-1" id="signup">
+  <%= form_for user do |f| %>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+    <br />
+
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+    <br />
+
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <br />
+
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+    <br />
+
+    <%= f.fields_for :profile, Profile.new do |profile_fields| %>
+      <h3>Birthdate</h3>
+       <%= profile_fields.label :dob_day, "Day" %>
+       <%= profile_fields.select :dob_day, 1..31 %>
+
+       <%= profile_fields.label :dob_month, "Month" %>
+       <%= profile_fields.select :dob_month, 1..12 %>
+
+       <%= profile_fields.label :dob_year, "Year" %>
+       <%= profile_fields.select :dob_year, 1900..2010 %>
+       <br>
+       <%= profile_fields.label :gender %>
+       <%= profile_fields.radio_button :gender, 'Male' %>Male
+       <%= profile_fields.radio_button :gender, 'Female' %>Female
+       <br>
+     <% end %>
+    <%= f.submit "Sign Up", class: "btn btn-success" %>
+  <% end %>
+</div>

@@ -1,0 +1,6 @@
+<h2>Friends <%=": " + friend_num %></h2>
+<%= friends.each do |friend| %>
+  <%= image_tag("icon_photo_small.png", alt: "photo") %>
+  <%= link_to friend.full_name, user_posts_path(friend.id) %>
+  <%= link_to "See more friends", friendings_path(user_id: paramas[:user_id]) %>
+<% end %>

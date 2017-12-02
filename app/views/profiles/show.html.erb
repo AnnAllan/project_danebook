@@ -1,0 +1,22 @@
+<%= render :partial => 'shared/middle_navbar' %>
+<h2>About</h2>
+<%= edit_link_display %>
+<h3>Basic Information</h3>
+<h4>Birthday:</h4>
+<%= profile.dob_day %>/<%= profile.dob_month %>/<%=profile.dob_year%>
+<h4>College:</h4>
+<%= profile.college %>
+<h4>Hometown:</h4>
+<%= profile.hometown %>
+<h4>Currently Lives:</h4>
+<%= profile.location %>
+<h3>Contact Information</h3>
+<h4>Email:</h4>
+<%= @user.email %>
+<h4>Telephone:</h4>
+<%=@profile.phone %>
+<h3>Additional Information</h3>
+<h4>Words to Live by:</h4>
+<%= @profile.motto %>
+<h4>About Me</h4>
+<%= @profile.about %>

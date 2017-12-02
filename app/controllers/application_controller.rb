@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
 
   def sign_out
     @current_user = nil
-    cookies.delete(:auth_token)
+    cookies.delete(:auth_token) if cookies[:auth_token]
   end
 
   def current_user
@@ -51,4 +51,17 @@ class ApplicationController < ActionController::Base
       redirect_to user_posts_path(current_user.id)
     end
   end
+
+  def store_referer
+    session[:referer] = URI(request.referer).path
+  end
+
+  def referer
+    session.delete(:referer)
+  end
+
+  def object_owner?(thing)
+    current_user.id == thing.user_id
+  end
+  helper_method :object_owner?
 end

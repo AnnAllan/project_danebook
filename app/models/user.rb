@@ -6,6 +6,13 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :comments, through: :posts
+  has_many :likes, through: :posts
+  has_many :friendings
+  has_many :friends, :through => :friendings
+  has_many :inverse_friendings, :class_name => "Friending", :foreign_key => "friend_id"
+  has_many :inverse_friends, :through => :inverse_friendings, :source => :user
+
+  accepts_nested_attributes_for :profile, :reject_if => :all_blank
 
   validates :first_name, :last_name, :presence => true,
                                     :length => {:in => 1..30},
@@ -19,7 +26,13 @@ class User < ApplicationRecord
            :length => {:in => 6..24},
            :allow_nil => true
 
-  validates :dob, :presence => true  
+  def friends
+    friended_users
+  end
+
+  def match_like(params)
+    likes.where("likable_id = ? AND likable_type = ?", params[:likable_id], params[:likable_type]).first
+  end
 
   def full_name
     self.first_name + " " + self.last_name

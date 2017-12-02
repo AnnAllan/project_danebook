@@ -1,0 +1,22 @@
+<%= render :partial => 'shared/middle_navbar' %>
+<h2>Edit Profile</h2>
+<%= form_for [current_user, @profile] do |f| %>
+  <h3>Basic Information</h3>
+  <h4>College:</h4>
+  <%= f.text_field :college, class: "form-control" %>
+  <h4>Hometown:</h4>
+  <%= f.text_field :hometown, class: "form-control" %>
+  <h4>Currently Lives:</h4>
+  <%= f.text_field :location, class: "form-control" %>
+  <h3>Contact Information</h3>
+  <h4>Email:</h4>
+  <%= current_user.email %>
+  <h4>Telephone:</h4>
+  <%= f.telephone_field :phone, class: "form-control" %>
+  <h3>Additional Information</h3>
+  <h4>Words to Live by:</h4>
+  <%= f.text_area :motto, class: "form-control" %>
+  <h4>About Me:</h4>
+  <%= f.text_area :about, class: "form-control" %>
+  <%= f.submit "Save Changes", class: "btn btn-success" %>
+<% end %>

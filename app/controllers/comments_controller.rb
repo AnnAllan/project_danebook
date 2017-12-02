@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :store_referer
 
   def create
     @comment = Comment.new(params_list)

@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @user.build_profile
     redirect_to user_posts_path(current_user) if current_user
   end
 
@@ -17,9 +18,10 @@ class UsersController < ApplicationController
     if @user.save
       sign_in(@user)
       flash[:success] = "Created new user!"
-      redirect_to edit_user_path(@user)
+      redirect_to edit_user_profile_path(@user)
     else
       flash.now[:error] = "Failed to Create User!"
+      @user.build_profile
       render :new
     end
   end
@@ -37,6 +39,22 @@ class UsersController < ApplicationController
   private
 
   def safe_user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :dob, :gender, :college, :hometown, :currently_lives, :phone, :words_live, :about_me)
+    params.require(:user).permit(:first_name,
+                                 :last_name,
+                                 :email,
+                                 :password,
+                                 :password_confirmation,
+                                 :id,
+                                 {profile_attributes: [:user_id,
+                                                       :college,
+                                                       :hometown,
+                                                       :location,
+                                                       :phone,
+                                                       :motto,
+                                                       :about,
+                                                       :gender,
+                                                       :dob_day,
+                                                       :dob_month,
+                                                       :dob_year] })
   end
 end

@@ -8,7 +8,6 @@ FactoryGirl.define do
     last_name "Last"
     password  "password"
     password_confirmation "password"
-    dob   {Date.parse('06-06-1996')}
   end
 
   factory :post_like, class: "Like" do
@@ -32,6 +31,9 @@ FactoryGirl.define do
   end
 
   factory :profile do
+    dob_day     23
+    dob_month   8
+    dob_year    1988
     college     "Penn State"
     hometown    "Pittsburgh"
     location    "Undisclosed"

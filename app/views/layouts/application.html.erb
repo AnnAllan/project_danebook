@@ -14,17 +14,13 @@
   </head>
 
   <body>
-    <% if signed_in_user? %>
-      Welcome, <%= link_to current_user.first_name, current_user %>!
-      <%= link_to "Logout", logout_path, :method => :delete %>
-    <% else %>
-      <%= link_to "Login", login_path %>
-    <% end %>
-
+    <div>
+      <%= navbar_display %>
+    </div>
     <div>
       <%= render partial: "shared/flash" %>
     </div>
-    
+
     <%= yield %>
   </body>
 </html>
