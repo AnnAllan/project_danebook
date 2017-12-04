@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   before_action :require_valid_user
-  before_action :require_current_user, except: [:index]
 
   def index
     @post = Post.new
@@ -14,6 +13,8 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(safe_post_params)
     @post.user_id = current_user.id
+    puts "made it to posts create+++++++++"
+    puts "#{@post.save}"
     if @post.save
       flash[:success] = "Created new post!"
     else

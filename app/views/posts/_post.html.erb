@@ -9,7 +9,7 @@
   <div>
     <%= like_display(post).html_safe %>
     <%= like_or_unlike_link(post) %>
-    <%= comment %>
+    <%= link_to "Comment", comments_path %>
     <%= post_owner_link_option(post) %>
   </div>
   <div>
