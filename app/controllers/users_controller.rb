@@ -14,10 +14,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(safe_user_params)
+    @user = User.create(safe_user_params)
+      puts "#{ @user.errors.full_messages}"
     if @user.save
+      puts "user saved------------------------"
       sign_in(@user)
+      puts "signed in user_______________________________"
       flash[:success] = "Created new user!"
+      puts "#{@user} is the users info for edit user prof path"
       redirect_to edit_user_profile_path(@user)
     else
       flash.now[:error] = "Failed to Create User!"

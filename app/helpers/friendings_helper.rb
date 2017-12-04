@@ -1,7 +1,7 @@
 module FriendingsHelper
 
   def friend_unfriend_button(friend_id = parama[:user_id])
-    friended = currnt_user.friended_users.findy_by_id(friend_id)
+    friended = currnt_user.inverse_friends.findy_by_id(friend_id)
     if friended
       link_to "Remove Friend", friending_path(friended.id, friend_id: friend), method: :delete, id: "friending"
     else

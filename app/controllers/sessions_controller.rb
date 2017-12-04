@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
       redirect_to user_path(@user)
     else
       flash.now[:error] = "We couldn't sign you in"
+      puts "user is #{@user.name}"
       redirect_to root_path
     end
   end

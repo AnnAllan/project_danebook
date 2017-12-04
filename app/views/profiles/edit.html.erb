@@ -1,6 +1,6 @@
 <%= render :partial => 'shared/middle_navbar' %>
 <h2>Edit Profile</h2>
-<%= form_for [current_user, @profile] do |f| %>
+<%= form_for [current_user, @user.profile] do |f| %>
   <h3>Basic Information</h3>
   <h4>College:</h4>
   <%= f.text_field :college, class: "form-control" %>

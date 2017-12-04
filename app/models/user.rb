@@ -7,8 +7,8 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, through: :posts
   has_many :likes, through: :posts
-  has_many :friendings
-  has_many :friends, :through => :friendings
+  has_many :friendings, :class_name => "Friending", :foreign_key => "friender_id"
+  has_many :friends, :through => :friendings, :source => :user
   has_many :inverse_friendings, :class_name => "Friending", :foreign_key => "friend_id"
   has_many :inverse_friends, :through => :inverse_friendings, :source => :user
 
@@ -25,10 +25,6 @@ class User < ApplicationRecord
   validates :password,
            :length => {:in => 6..24},
            :allow_nil => true
-
-  def friends
-    friended_users
-  end
 
   def match_like(params)
     likes.where("likable_id = ? AND likable_type = ?", params[:likable_id], params[:likable_type]).first

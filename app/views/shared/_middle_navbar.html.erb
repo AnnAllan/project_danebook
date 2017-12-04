@@ -11,7 +11,6 @@
       <li><%= link_to "Timeline", user_posts_path(params[:user_id]) %></li>
       <li><%= link_to "About", user_profile_path(params[:user_id]) %></li>
       <li><%= link_to "Photos (123)", '#' %></li>
-      <li><%= link_to ("Friends " + friend_num).html_safe, friendings_path(user_id: params[:user_id]) %></li>
     </ul>
     <%= edit_or_friend_link %>
   </div>
