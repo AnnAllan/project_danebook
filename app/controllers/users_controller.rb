@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   before_action :require_valid_user,  only: [:edit, :update, :destroy]
 
   def show
-    redirect_to user_posts_path(params[:id])
+    puts "getting to user show action+++++++++++++++++++++++++++++++++++++"
+    redirect_to user_path
   end
 
   def new
@@ -20,6 +21,7 @@ class UsersController < ApplicationController
       puts "user saved------------------------"
       sign_in(@user)
       puts "signed in user_______________________________"
+      puts "#{current_user.first_name}!!!!!!!!!!!!!!!!!!!!!!!!!!!"
       flash[:success] = "Created new user!"
       puts "#{@user} is the users info for edit user prof path"
       redirect_to edit_user_profile_path(@user)

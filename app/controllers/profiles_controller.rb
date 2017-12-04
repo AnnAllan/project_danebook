@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :require_current_user, except: [:create, :show, :edit]
+  before_action :require_current_user, except: [:create, :show, :edit, :update]
 
   def create
     @profile = Profile.new(safe_user_params)
@@ -19,6 +19,7 @@ class ProfilesController < ApplicationController
   end
 
   def edit
+    puts "made it to profile edit action+++++++++++++++++++++++++"
     @user = User.find(params[:user_id])
     @profile = User.find(params[:user_id])
   end
