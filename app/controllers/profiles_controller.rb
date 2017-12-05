@@ -1,5 +1,4 @@
 class ProfilesController < ApplicationController
-  before_action :require_current_user, except: [:create, :show, :edit, :update]
 
   def create
     @profile = Profile.new(safe_user_params)

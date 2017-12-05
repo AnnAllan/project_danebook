@@ -15,6 +15,7 @@ class LikesController < ApplicationController
     @like = current_user.match_like(safe_like_params)
     if current_user.id == @like.user_id && @like.destroy
       flash[:success] = "Unliked"
+      redirect_to user_post_path(current_user.id)
     else
       flash[:error] = "Unable to unlike"
     end
