@@ -46,7 +46,6 @@ module LikesHelper
 
 
   def like_or_unlike_link(object)
-    puts "made it to like or unlike link"
     if object.likes.you_liked?(current_user)
       link_to "Unlike", unlike_path(like: {:likable_id => object.id, :likable_type => object.class}), method: :delete, class: "col-md-4 pull-left", remote: true
     else

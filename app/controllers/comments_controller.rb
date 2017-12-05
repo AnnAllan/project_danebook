@@ -3,10 +3,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.create(params_list)
-    puts "#{@comment.content} is comment +++++++++++++++"
     @comment.user_id = current_user.id
-    puts "#{@comment.user_id} is com user Id ++++++++++++++++++++++"
-    puts "#{@comment.save} is status of save ++++++++++++++++++++"
     if @comment.save
       flash[:success] = "comment created"
     else

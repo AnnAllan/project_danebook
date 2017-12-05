@@ -13,8 +13,6 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(safe_post_params)
     @post.user_id = current_user.id
-    puts "made it to posts create+++++++++"
-    puts "#{@post.save}"
     if @post.save
       flash[:success] = "Created new post!"
     else
