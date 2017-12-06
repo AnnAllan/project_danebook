@@ -7,10 +7,16 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, through: :posts
   has_many :likes, through: :posts
-  has_many :friendings, :class_name => "Friending", :foreign_key => "friender_id"
-  has_many :friends, :through => :friendings, :source => :user
-  has_many :inverse_friendings, :class_name => "Friending", :foreign_key => "friend_id"
-  has_many :inverse_friends, :through => :inverse_friendings, :source => :user
+
+
+  has_many :initiated_friendings, :foreign_key => :friender_id,
+                                  :class_name => "Friending"
+  has_many :friended_users,       :through => :initiated_friendings,
+                                  :source => :friend_recipient
+  has_many :received_friendings,  :foreign_key => :friend_id,
+                                  :class_name => "Friending"
+  has_many :users_friended_by,    :through => :received_friendings,
+                                  :source => :friend_initiator
 
   accepts_nested_attributes_for :profile, :reject_if => :all_blank
 

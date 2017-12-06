@@ -9,7 +9,7 @@ class FriendingsController < ApplicationController
 
     if params[:user_id] == current_user.id.to_s
       flash[:error] = "Cannot friend yourself"
-    elsif current_user.inverse_friends << friending_recipient
+    elsif current_user.received_friendings << friending_recipient
       flash[:success] = "You are now friends with #{friending_recipient.full_name}"
     else
       flash[:error] = "Not able to friend this person"
@@ -19,13 +19,13 @@ class FriendingsController < ApplicationController
 
   def destroy
     unfriended_user = User.find(params[:friend_id])
-    if current_user.inverse_friends.delete(unfriended_user)
+    if current_user.received_friendings.delete(unfriended_user)
       flash[:success] = "You are no longer friends with #{unfriended_user.full_name}"
       redirect_to user_posts_path(current_user)
     else
       flash[:error] = "Unable to unfriend this person"
     end
   end
-  
+
 
 end

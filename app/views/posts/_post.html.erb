@@ -11,6 +11,7 @@
     <%= like_or_unlike_link(post) %>
     <%= link_to "Comment", comments_path %>
     <%= post_owner_link_option(post) %>
+    
   </div>
   <div>
     <%= render @comments= post.comments %>
