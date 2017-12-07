@@ -32,6 +32,10 @@ class User < ApplicationRecord
            :length => {:in => 6..24},
            :allow_nil => true
 
+  def friends
+    friended_users
+  end
+
   def match_like(params)
     likes.where("likable_id = ? AND likable_type = ?", params[:likable_id], params[:likable_type]).first
   end

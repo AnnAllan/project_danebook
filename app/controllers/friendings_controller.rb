@@ -1,6 +1,7 @@
 class FriendingsController < ApplicationController
   def index
-    user = User.find(params[:user_id]) if require_valid_user
+    user = User.find(params[:friender_id])
+    @user = user
     @friends = user.friends
   end
 
