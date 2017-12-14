@@ -38,6 +38,10 @@ gem 'jazz_fingers'
 gem 'will_paginate'
 gem 'simple_form'
 gem 'faker'
+gem 'paperclip'
+gem 'figaro'
+gem 'aws-sdk'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -47,6 +51,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
   gem 'guard-rspec', require: false
+  gem 'letter_opener'
 end
 
 group :test do

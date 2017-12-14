@@ -3,9 +3,9 @@ module FriendingsHelper
   def friend_unfriend_button(friend_id = params[:user_id])
     friended = current_user.received_friendings.find_by_id(friend_id)
     if friended
-      link_to "Remove Friend", friending_path(friended.id, friend_id: friend), method: :delete, id: "friending"
+      link_to "Remove Friend", friending_path(friend.id, friend_id: friend), method: :delete, id: "friending"
     else
-      link_to "Add Friend", friendings_path(friend_id: friend_id), mthod: :post, id: "friending"
+      link_to "Add Friend", friendings_path(friend_id: friend_id), method: :post, id: "friending"
     end
   end
 
